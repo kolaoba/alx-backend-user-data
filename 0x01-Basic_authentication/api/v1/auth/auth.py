@@ -9,8 +9,13 @@ class Auth:
     """Defines Auth Class"""
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """rdefines require auth function"""
-        return False
+        """defines require auth function"""
+        
+        if path is None or excluded_paths is None:
+            return True
+        if path in excluded_paths or path + '/' in excluded_paths:
+            return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """defines authorization header"""
