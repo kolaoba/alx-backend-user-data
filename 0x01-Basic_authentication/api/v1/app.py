@@ -19,7 +19,8 @@ auth_type = os.getenv("AUTH_TYPE")
 
 if auth_type == 'auth':
     auth = Auth()
-    
+
+
 @app.errorhandler(404)
 def not_found(error) -> str:
     """ Not found handler
@@ -39,6 +40,7 @@ def forbidden(error) -> str:
     """ Forbidden handler
     """
     return jsonify({"error": "Forbidden"}), 403
+
 
 @app.before_request
 def before_request():
