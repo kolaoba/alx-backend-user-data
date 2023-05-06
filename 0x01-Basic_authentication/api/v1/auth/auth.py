@@ -10,7 +10,7 @@ class Auth:
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """defines require auth function"""
-        
+
         if path is None or excluded_paths is None:
             return True
         if path in excluded_paths or path + '/' in excluded_paths:
