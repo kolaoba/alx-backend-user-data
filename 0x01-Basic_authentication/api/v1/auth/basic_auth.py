@@ -8,6 +8,7 @@ import base64
 import binascii
 from typing import Tuple
 
+
 class BasicAuth(Auth):
     """class inherits from auth"""
 
