@@ -44,7 +44,7 @@ class DB:
             user = None
         return user
 
-    def find_user_by(self, **kwargs):
+    def find_user_by(self, **kwargs) -> User:
         """Find user by arbitraty input"""
         if not kwargs:
             raise InvalidRequestError
