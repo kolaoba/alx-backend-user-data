@@ -68,13 +68,13 @@ class Auth:
         return user
 
     def destroy_session(self, user_id: int) -> None:
-        """destroys a current session"""
+        """destroys current session"""
         if user_id is None:
             return None
         self._db.update_user(user_id, session_id=None)
 
     def get_reset_password_token(self, email: str) -> str:
-        """method resets a password token"""
+        """resets password token"""
         if email is None:
             return None
         try:
@@ -88,7 +88,7 @@ class Auth:
         return reset_token
 
     def update_password(self, reset_token: str, password: str) -> None:
-        """method update a user password"""
+        """update user password"""
         try:
             user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
