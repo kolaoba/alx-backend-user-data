@@ -11,6 +11,7 @@ from sqlalchemy.exc import InvalidRequestError
 from user import Base, User
 from typing import Optional
 
+
 class DB:
     """DB class
     """
