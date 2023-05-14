@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 
 from user import Base, User
 
@@ -40,4 +42,13 @@ class DB:
         except Exception:
             self._session.rollback()
             user = None
+        return user
+
+    def find_user_by(self, **kwargs):
+        """Find user by arbitraty input"""
+        if not kwargs:
+            raise InvalidRequestError 
+        user = self._session.query(User).filter_by(**kwargs).first()
+        if user is None:
+            raise NoResultFound
         return user
